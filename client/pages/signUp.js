@@ -8,6 +8,11 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import logo from "../images/big-logo.png";
 
 function Copyright() {
@@ -41,10 +46,28 @@ const useStyles = makeStyles(theme => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 400,
+    },
+    selectEmpty: {
+        marginTop: theme.spacing(2),
+    },
 }));
 
 export default function SignUp() {
     const classes = useStyles();
+    const [area, setArea] = React.useState('');
+    const inputLabel = React.useRef(null);
+    const [labelWidth, setLabelWidth] = React.useState(0);
+    React.useEffect(() => {
+        setLabelWidth(inputLabel.current.offsetWidth);
+    }, []);
+
+    const handleChange = event => {
+        setArea(event.target.value);
+    };
+    const areas = ["Tel Aviv Center", "Tel Aviv Old North", "Florentin", "Givataim"];
 
     return (
         <Container component="main" maxWidth="xs">
@@ -106,6 +129,23 @@ export default function SignUp() {
                                 autoComplete="current-password"
                             />
                         </Grid>
+                        <FormControl variant="outlined" className={classes.formControl}>
+                            <InputLabel ref={inputLabel} id="select-area-label">
+                                Area *
+                            </InputLabel>
+                            <Select
+                                labelId="select-area-label"
+                                id="select-area"
+                                value={area}
+                                onChange={handleChange}
+                                labelWidth={labelWidth}
+                                autoWidth
+                            >
+                                {areas.map(function(area, index){
+                                    return <MenuItem value={ index }>{area}</MenuItem>;
+                                })}
+                            </Select>
+                        </FormControl>
                     </Grid>
                     <Button
                         type="submit"
