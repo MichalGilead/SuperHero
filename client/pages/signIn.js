@@ -12,14 +12,12 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import logo from "../images/big-logo.png";
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Your Website
-            </Link>{' '}
+            {'Copyright © Super-Hero '}
             {new Date().getFullYear()}
             {'.'}
         </Typography>
@@ -28,17 +26,17 @@ function Copyright() {
 
 const useStyles = makeStyles(theme => ({
     paper: {
-        marginTop: theme.spacing(8),
+        marginTop: theme.spacing(4),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
     },
     avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
+        width: '380px',
+        height: '260px'
     },
     form: {
-        width: '100%', // Fix IE 11 issue.
+        width: '100%',
         marginTop: theme.spacing(1),
     },
     submit: {
@@ -53,12 +51,14 @@ export default function SignIn() {
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Sign in
-                </Typography>
+                <img src={logo} alt="logo" className={classes.avatar}/>
+                <Grid container>
+                    <Grid container justify="flex-start">
+                        <Typography component="h1" variant="h5">
+                            Sign In
+                        </Typography>
+                    </Grid>
+                </Grid>
                 <form className={classes.form} noValidate>
                     <TextField
                         variant="outlined"
@@ -82,10 +82,6 @@ export default function SignIn() {
                         id="password"
                         autoComplete="current-password"
                     />
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                    />
                     <Button
                         type="submit"
                         fullWidth
@@ -96,13 +92,8 @@ export default function SignIn() {
                         Sign In
                     </Button>
                     <Grid container>
-                        <Grid item xs>
-                            <Link href="#" variant="body2">
-                                Forgot password?
-                            </Link>
-                        </Grid>
-                        <Grid item>
-                            <Link href="#" variant="body2">
+                        <Grid container justify="flex-end">
+                            <Link href="/" variant="body2">
                                 {"Don't have an account? Sign Up"}
                             </Link>
                         </Grid>
