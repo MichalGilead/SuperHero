@@ -1,2 +1,0 @@
-# SuperHero
-crowd sourcing project
