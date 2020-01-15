@@ -4,7 +4,7 @@ const OCR = require("./products");
 const getBasket = require("./getBasket");
 const server = express();
 const port = 3000;
-const FOLDER_PATH = 'C:\\Users\\tomer\\WebstormProjects\\superhero3\\receipt_uploads';
+const FOLDER_PATH = 'C:\\Users\\tomer\\WebstormProjects\\superhero3\\receipt_uploads\\';
 
 //npm install --save body-parser
 const bodyParser = require('body-parser');
